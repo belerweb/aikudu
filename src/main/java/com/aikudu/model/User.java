@@ -17,13 +17,14 @@ public class User implements Serializable {
   private String email;// 电子邮件
   private String username;// 用户名
   private String password;// 密码
-  private Boolean needChangePwd = false;// 需要修改密码
-  private Boolean mobileValid = false;// 手机号已验证
-  private Boolean emailValid = false;// 电子邮件已验证
-  private String subDomain;// TODO DELETE 子域名
+
+  private String activationCode;// 帐户激活码
+  private String phoneCode;// 手机激活码
+  private String emailCode;// 电子邮件激活码
+  private Boolean enabled = Boolean.FALSE;// 帐户是否激活
+
   private String fullname;// 姓名
   private String nickname;// 昵称
-  private String avatar;// 头像
   private String source;// 注册来源
   private String lastLoginIP;// 最后登录IP
   private Date created;// 注册时间
@@ -70,6 +71,38 @@ public class User implements Serializable {
     this.password = password;
   }
 
+  public String getActivationCode() {
+    return activationCode;
+  }
+
+  public void setActivationCode(String activationCode) {
+    this.activationCode = activationCode;
+  }
+
+  public String getPhoneCode() {
+    return phoneCode;
+  }
+
+  public void setPhoneCode(String phoneCode) {
+    this.phoneCode = phoneCode;
+  }
+
+  public String getEmailCode() {
+    return emailCode;
+  }
+
+  public void setEmailCode(String emailCode) {
+    this.emailCode = emailCode;
+  }
+
+  public Boolean getEnabled() {
+    return enabled;
+  }
+
+  public void setEnabled(Boolean enabled) {
+    this.enabled = enabled;
+  }
+
   public String getFullname() {
     return fullname;
   }
@@ -84,14 +117,6 @@ public class User implements Serializable {
 
   public void setNickname(String nickname) {
     this.nickname = nickname;
-  }
-
-  public String getAvatar() {
-    return avatar;
-  }
-
-  public void setAvatar(String avatar) {
-    this.avatar = avatar;
   }
 
   public String getSource() {
@@ -110,14 +135,6 @@ public class User implements Serializable {
     this.lastLoginIP = lastLoginIP;
   }
 
-  public Boolean getNeedChangePwd() {
-    return needChangePwd;
-  }
-
-  public void setNeedChangePwd(Boolean needChangePwd) {
-    this.needChangePwd = needChangePwd;
-  }
-
   public Date getCreated() {
     return created;
   }
@@ -134,14 +151,6 @@ public class User implements Serializable {
     this.modified = modified;
   }
 
-  public List<SimpleGrantedAuthority> getWrapperRoles() {
-    List<SimpleGrantedAuthority> roles = new ArrayList<>();
-    for (String role : this.roles) {
-      roles.add(new SimpleGrantedAuthority(role));
-    }
-    return roles;
-  }
-
   public List<String> getRoles() {
     return roles;
   }
@@ -150,28 +159,12 @@ public class User implements Serializable {
     this.roles = roles;
   }
 
-  public Boolean getMobileValid() {
-    return mobileValid;
-  }
-
-  public void setMobileValid(Boolean mobileValid) {
-    this.mobileValid = mobileValid;
-  }
-
-  public Boolean getEmailValid() {
-    return emailValid;
-  }
-
-  public void setEmailValid(Boolean emailValid) {
-    this.emailValid = emailValid;
-  }
-
-  public String getSubDomain() {
-    return subDomain;
-  }
-
-  public void setSubDomain(String subDomain) {
-    this.subDomain = subDomain;
+  public List<SimpleGrantedAuthority> getWrapperRoles() {
+    List<SimpleGrantedAuthority> roles = new ArrayList<>();
+    for (String role : this.roles) {
+      roles.add(new SimpleGrantedAuthority(role));
+    }
+    return roles;
   }
 
   public static class UserWrapper extends org.springframework.security.core.userdetails.User {
@@ -179,7 +172,8 @@ public class User implements Serializable {
     private User user;
 
     public UserWrapper(String username, User user) {
-      super(username, user.getPassword(), user.getWrapperRoles());
+      super(username, user.getPassword(), user.getEnabled(), true, true, true, user
+          .getWrapperRoles());
       this.user = user;
     }
 

@@ -7,13 +7,12 @@
 		<property name="email" />
 		<property name="username" />
 		<property name="password" />
-		<property name="needChangePwd" />
-		<property name="mobileValid" />
-		<property name="emailValid" />
-		<property name="subDomain" /><!-- TODO DELETE -->
+		<property name="activationCode" />
+		<property name="phoneCode" />
+		<property name="emailCode" />
+		<property name="enabled" />
 		<property name="fullname" />
 		<property name="nickname" />
-		<property name="avatar" />
 		<property name="source" />
 		<property name="lastLoginIP" />
 		<property name="roles" />
