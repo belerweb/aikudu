@@ -8,12 +8,22 @@ public class IndexController extends ControllerHelper {
 
   @RequestMapping("/")
   public Object root() {
-    return "index";
+    return "v1/index";
   }
 
   @RequestMapping("/index.html")
   public Object index() {
-    return "index";
+    return "v1/index";
+  }
+
+  @RequestMapping("/login.html")
+  public Object login() {
+    return "v1/login";
+  }
+
+  @RequestMapping("/signup.html")
+  public Object signup() {
+    return "v1/signup";
   }
 
 }
