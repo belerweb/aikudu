@@ -9,10 +9,10 @@
 	</div>
 </div>
 
-<div class="container">		
+<div class="container">
 	<div class="row-fluid">
-		<form class="log-page">
-			<h3>登录</h3>    
+		<form method="post" action="${ContextPath}/login" class="log-page">
+			<h3>登录</h3>
 			<div class="input-prepend">
 				<span class="add-on"><i class="icon-user"></i></span>
 				<input name="j_username" type="text" placeholder="用户名/手机号/电子邮件" class="input-xlarge">

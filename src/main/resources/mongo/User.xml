@@ -13,6 +13,7 @@
 		<property name="enabled" />
 		<property name="fullname" />
 		<property name="nickname" />
+		<property name="gravatar" />
 		<property name="source" />
 		<property name="lastLoginIP" />
 		<property name="roles" />

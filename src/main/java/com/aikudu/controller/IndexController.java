@@ -26,4 +26,9 @@ public class IndexController extends ControllerHelper {
     return "v1/signup";
   }
 
+  @RequestMapping("/redirect")
+  public Object redirect() {
+    return "redirect:/";
+  }
+
 }

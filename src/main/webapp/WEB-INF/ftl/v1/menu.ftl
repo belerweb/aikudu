@@ -12,12 +12,27 @@
 						</li>
 					</ul>
 					<ul class="nav pull-right">
+						<#if User?has_content>
+						<li>
+							<img src="http://www.gravatar.com/avatar/${User.detail.gravatar}?s=67&d=monsterid" />
+						</li>
+						<li data-active-nav="user">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+								${User.detail.nickname!User.detail.fullname!User.username} 
+								<b class="caret"></b> 
+							</a>
+							<ul class="dropdown-menu">
+								<li><a href="${ContextPath}/logout">退出</a></li>
+							</ul>
+						</li>
+						<#else>
 						<li data-active-nav="signup">
 							<a href="${ContextPath}/signup.html">注册</a>
 						</li>
 						<li data-active-nav="login">
 							<a href="${ContextPath}/login.html">登录</a>
 						</li>
+						</#if>
 					</ul>
 				</div>
 			</div>

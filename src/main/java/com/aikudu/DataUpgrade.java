@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.stereotype.Component;
 
@@ -35,6 +36,7 @@ public class DataUpgrade implements InitializingBean {
       user.setPassword(new ShaPasswordEncoder(256).encodePassword(admin, null));
       user.setNickname(admin);
       user.setFullname(admin);
+      user.setGravatar(new Md5PasswordEncoder().encodePassword(admin, null));
       user.getRoles().add("ROLE_ADMIN");
       user.setEnabled(true);
       user.setCreated(new Date());

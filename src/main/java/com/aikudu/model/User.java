@@ -25,6 +25,7 @@ public class User implements Serializable {
 
   private String fullname;// 姓名
   private String nickname;// 昵称
+  private String gravatar;// gravatar
   private String source;// 注册来源
   private String lastLoginIP;// 最后登录IP
   private Date created;// 注册时间
@@ -117,6 +118,14 @@ public class User implements Serializable {
 
   public void setNickname(String nickname) {
     this.nickname = nickname;
+  }
+
+  public String getGravatar() {
+    return gravatar;
+  }
+
+  public void setGravatar(String gravatar) {
+    this.gravatar = gravatar;
   }
 
   public String getSource() {
