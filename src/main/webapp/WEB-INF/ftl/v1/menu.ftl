@@ -22,6 +22,9 @@
 								<b class="caret"></b> 
 							</a>
 							<ul class="dropdown-menu">
+								<#if User.detail.roles?seq_contains('ROLE_ADMIN')>
+								<li><a href="${ContextPath}/admin" target="blank">管理</a></li>
+								</#if>
 								<li><a href="${ContextPath}/logout">退出</a></li>
 							</ul>
 						</li>

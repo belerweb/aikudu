@@ -1,7 +1,7 @@
 <#import "/springx.ftl" as springx>
 <#assign ContextPath = springMacroRequestContext.getContextPath() />
-<#assign Authentication = securityContextHolder.getContext().getAuthentication() />
-<#if Authentication?exists && Authentication.getPrincipal()!="anonymousUser">
+<#assign Authentication = securityContextHolder.getContext().getAuthentication()! />
+<#if Authentication?has_content && Authentication.getPrincipal()!="anonymousUser">
 	<#assign User = Authentication.getPrincipal() />
 </#if>
 <!DOCTYPE html>
