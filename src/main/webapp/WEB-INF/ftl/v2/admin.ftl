@@ -3,7 +3,7 @@
 <#include "header_top.ftl">
 <#assign Menu=[{
 	'name':'图书管理',
-	'url':'/book/all'
+	'url':'/admin/book/all'
 }] />
 <#include "sidebar.ftl">
 <div id="main-content" class="clearfix">

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<descriptors>
+
+	<object class="com.aikudu.model.Book">
+		<property name="id" id="true" />
+		<property name="name" />
+		<property name="authors" />
+		<property name="format" />
+		<property name="price" />
+		<property name="press" />
+		<property name="version" />
+		<property name="pubDate" />
+		<property name="language" />
+		<property name="pages" />
+		<property name="size" />
+		<property name="isbn10" />
+		<property name="isbn13" />
+		<property name="asin" />
+		<property name="barcode" />
+		<property name="dimension" />
+		<property name="weight" />
+		<property name="brands" />
+		<property name="cover" />
+		<property name="editorChoice" />
+		<property name="mediaChoice" />
+		<property name="description" />
+		<property name="category" />
+		<property name="series" />
+		<property name="doubanId" />
+		<property name="epubs" />
+		<property name="mobis" />
+		<property name="created" />
+		<property name="modified" />
+	</object>
+
+	<object class="com.aikudu.model.BookAuthor">
+		<property name="name" />
+		<property name="description" />
+	</object>
+
+</descriptors>
