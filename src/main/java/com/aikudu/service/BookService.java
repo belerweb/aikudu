@@ -1,5 +1,7 @@
 package com.aikudu.service;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +13,8 @@ import com.googlecode.mjorm.query.DaoQuery;
 @Service
 public class BookService {
 
+  @Autowired
+  private IdGenerator idGenerator;
   @Autowired
   private MongoDao mongoDao;
 
@@ -25,4 +29,14 @@ public class BookService {
 
     return result;
   }
+
+  public Book addBook(String name) {
+    Book book = new Book();
+    book.setId(idGenerator.getStringId());
+    book.setName(name);
+    book.setCreated(new Date());
+    book.setModified(book.getCreated());
+    return mongoDao.createObject("Book", book);
+  }
+
 }

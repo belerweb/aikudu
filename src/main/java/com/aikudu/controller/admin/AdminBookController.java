@@ -23,4 +23,14 @@ public class AdminBookController extends ControllerHelper {
     return "v2/book/all";
   }
 
+  @RequestMapping("/admin/book/add")
+  public Object add(@RequestParam String name) {
+    isRole("ROLE_ADMIN");
+    if (name.length() > 64) {
+      return error("书名不能超过64个字");
+    }
+    bookService.addBook(name);
+    return ok();
+  }
+
 }
