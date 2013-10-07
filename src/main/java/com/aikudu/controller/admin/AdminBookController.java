@@ -33,4 +33,11 @@ public class AdminBookController extends ControllerHelper {
     return ok();
   }
 
+  @RequestMapping("/admin/book/delete")
+  public Object delete(@RequestParam String id) {
+    isRole("ROLE_ADMIN");
+    bookService.deleteBook(id);
+    return ok();
+  }
+
 }

@@ -39,4 +39,8 @@ public class BookService {
     return mongoDao.createObject("Book", book);
   }
 
+  public void deleteBook(String id) {
+    mongoDao.deleteObject("Book", id);
+  }
+
 }

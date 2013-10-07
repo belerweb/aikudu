@@ -30,7 +30,8 @@
 					<td>${book.name!}</td>
 					<td class="td-actions center">
 						<div class="btn-group">
-							<button type="button" class="btn btn-mini btn-danger" title="删除" data-action="delete">
+							<button type="button" class="btn btn-mini btn-danger" title="删除"
+								data-action="delete" data-id="${book.id!}" data-name="${book.name!}">
 								<i class="icon-trash bigger-120"></i>
 							</button>
 						</div>
@@ -64,6 +65,21 @@ $('#page-content button[data-action=add]').click(function(){
 		header: '增加图书'
 	});
 	$('.modal-body', dialog).append($('#page-content form').parent().html());
+});
+$('#page-content button[data-action=delete]').click(function(){
+	var id = $(this).data('id');
+	var name = $(this).data('name');
+	bootbox.confirm('确认删除 [' + name + '] ?', function(result) {
+		if (result) {
+			$.post('${ContextPath}/admin/book/delete', {
+				id: id
+			}).done(function(){
+				App.reload('#main-content');
+			}).fail(function(xhr, status, response, form){
+				bootbox.alert('<div class="alert alert-error">' + xhr.responseText + '</div>');
+			});
+		}
+	});
 });
 $('#main-list-table').dataTable({
 	iDeferLoading: ${result.total},
