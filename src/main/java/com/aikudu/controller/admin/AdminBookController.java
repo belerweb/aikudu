@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.aikudu.controller.ControllerHelper;
@@ -38,6 +39,13 @@ public class AdminBookController extends ControllerHelper {
     isRole("ROLE_ADMIN");
     bookService.deleteBook(id);
     return ok();
+  }
+
+  @RequestMapping(method = RequestMethod.GET, value = "/admin/book/edit")
+  public Object edit(@RequestParam String id, Model model) {
+    isRole("ROLE_ADMIN");
+    model.addAttribute("book", bookService.getBook(id));
+    return "v2/book/edit";
   }
 
 }

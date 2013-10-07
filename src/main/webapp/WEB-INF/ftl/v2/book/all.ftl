@@ -30,6 +30,10 @@
 					<td>${book.name!}</td>
 					<td class="td-actions center">
 						<div class="btn-group">
+							<button type="button" class="btn btn-mini btn-info" title="编辑"
+								data-action="edit" data-id="${book.id!}">
+								<i class="icon-edit bigger-120"></i>
+							</button>
 							<button type="button" class="btn btn-mini btn-danger" title="删除"
 								data-action="delete" data-id="${book.id!}" data-name="${book.name!}">
 								<i class="icon-trash bigger-120"></i>
@@ -65,6 +69,10 @@ $('#page-content button[data-action=add]').click(function(){
 		header: '增加图书'
 	});
 	$('.modal-body', dialog).append($('#page-content form').parent().html());
+});
+$('#page-content button[data-action=edit]').click(function(){
+	var id = $(this).data('id');
+	App.go('#main-content', '${ContextPath}/admin/book/edit?id=' + id);
 });
 $('#page-content button[data-action=delete]').click(function(){
 	var id = $(this).data('id');

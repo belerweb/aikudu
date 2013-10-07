@@ -43,4 +43,8 @@ public class BookService {
     mongoDao.deleteObject("Book", id);
   }
 
+  public Book getBook(String id) {
+    return mongoDao.findById("Book", Book.class, id);
+  }
+
 }

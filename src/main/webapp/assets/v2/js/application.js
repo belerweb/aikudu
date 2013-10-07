@@ -1,3 +1,6 @@
+$.fn.editable.defaults.mode = 'inline';
+$.fn.editable.defaults.emptytext  = '未设置';
+
 /**
  * Date formate
  */
